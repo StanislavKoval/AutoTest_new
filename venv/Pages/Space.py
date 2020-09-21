@@ -26,19 +26,17 @@ class Space_Class(Actions.Actions_Class):
 
     WORKSPACE_BUTTON = (By.XPATH, "//li[@class='bar__item']//a[@href='/lk/workspace/main']")
 
-#трабл с классами, а не с локатором
-    def open_workspace(self):
-        self.wait_time(time_to_wait=3)
-        self.driver.find_element(*WORKSPACE_BUTTON).click()
-        print('click')
-        self.wait_time(time_to_wait=3)
-        #print(self.verify_existence(locator=Pages.Space.Space_Class.WORKSPACE_BUTTON))
-        #self.click_the_button(locator=Pages.Space.Space_Class.WORKSPACE_BUTTON)
-'''
-        if self.driver.current_url == WORKSPACE_PAGE:
+#Переделать
+    def open_workspace(self,Workspace=WORKSPACE_BUTTON,Check=WORKSPACE_PAGE):
+        self.wait_time(time_to_wait=2)
+        self.click_the_button(locator=Workspace)
+
+        self.wait_time(time_to_wait=2)
+
+        if self.driver.current_url == Check:
             print('Успешное открытие Рабочего простраства')
         else:
-            print("Открытие Рабочего простраства не удалось")'''
+            print("Открытие Рабочего простраства не удалось")
             
 
 """Нижний хедер"""
