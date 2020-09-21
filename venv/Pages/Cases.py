@@ -1,10 +1,8 @@
-import time
-from selenium import webdriver
+import Actions
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
-class Case_Page_Locators:
+class Case_Page_Locators(Actions.Actions_Class):
+    
     CASE_COUNTER = (By.XPATH,"//span[@class='app-content-title-count']")
     ADD_CASE_BUTTON = (By.XPATH, "//div[@class='dataTableSort-addTrigger']")
     QUICKFILTER_FIELD = (By.XPATH, "//input[@id='flt']")
@@ -20,7 +18,7 @@ class Case_Page_Locators:
     FROM_CASES_TO_FILES_BUTTON = (By.XPATH, "//div[@class='barMenu-window barMenu--open']/button[2]")
     DELETE_CASE_BUTTON = (By.CSS_SELECTOR, "div.app-wrapper:nth-child(1) div.pageContainer.casesPage div.app-contentPage:nth-child(2) div.app-rightSideBar div.rightSideBar--box div.sidebarHead div.barMenu.barMenuDeadZone div.barMenu-window.barMenu--open > button.barMenu-link:nth-child(3)")
 
-    def Create_case(self, Case_number, Case_name, delete=False):
+    '''def Create_case(self, Case_number, Case_name, delete=False):
 
         if self.driver.current_url == First_time.Locators.Page_adresses.CASES_PAGE:
             Actions.click_the_button(self, locator=First_time.Locators.Case_Page_Locators.ADD_CASE_BUTTON)
@@ -52,4 +50,4 @@ class Case_Page_Locators:
                 print('Удалено')
 
         else:
-            print("Пользователь не находится на странице /cases")
+            print("Пользователь не находится на странице /cases")'''

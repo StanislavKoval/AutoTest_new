@@ -15,9 +15,6 @@ from selenium.webdriver.common.alert import Alert
 
 import Driver
 
-
-
-
 class Actions_Class(Driver.Driver):
     '''Работа с браузером'''
     def open_site(self,link):
