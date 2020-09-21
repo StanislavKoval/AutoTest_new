@@ -20,12 +20,9 @@ import Pages.Login
 #import Pages.Login
 #import Pages.Space
 
-bb = Actions.Actions()
 
-bb.open_site(link=Pages.Space.Space.LOGIN_PAGE)
-#bb.add_text_to_the_field(locator=Pages.Login.Login_Page_Locators.LOGIN_FIELD,text='dbadmin')
-#bb.add_text_to_the_field(locator=Pages.Login.Login_Page_Locators.PASSWORD_FIELD,text='pwd1')
-print(Pages.Login.Login_Page_Locators.LOGIN_FIELD)
+bb=Pages.Login.Login_Page_Class()
 
+bb.system_Log_In()
+bb.system_Log_Out()
 bb.close_site()
-#обновление локаторов на логин стр

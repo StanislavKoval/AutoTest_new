@@ -26,7 +26,6 @@ class Actions(Driver.Driver):
         self.driver.get(link)
         time.sleep(5)
 
-
     def close_site(self):
         print('Закрытие браузера')
         self.driver.quit()
@@ -37,43 +36,34 @@ class Actions(Driver.Driver):
 
 
 
-
     '''Работа с полями'''
     def add_text_to_the_field(self, locator, text):
-        field_to_add = self.driver.find_element(*locator)
-        field_to_add = field_to_add.send_keys(text)
+        self.driver.find_element(*locator).send_keys(text)
 
     def clean_the_field(self, locator):
-        field_to_clean = self.driver.find_element(*locator)
-        field_to_clean = field_to_clean.clear()
+        self.driver.find_element(*locator).clear()
 
     #Нужно проверить можно ли забрать значение из поля после его ввода add_text_to_the_field методом save_string
 
 
-
-
     '''Работа с кнопками'''
     def click_the_button(self, locator):
-        field_to_click = self.driver.find_element(*locator)
-        field_to_click = field_to_click.click()
-
+        self.driver.find_element(*locator).click()
 
 
 
 
     '''Считывание данных'''
     def save_counter_meaning(self, locator):
-        meaning_int = self.driver.find_element(*locator)
-        meaning_int = meaning_int.text
+        meaning_int = self.driver.find_element(*locator).text
 
-        meaning_int = meaning_int.replace(' ', '')
+        meaning_int = meaning_int.replace(' ', '')#удаляет пробелы
         if meaning_int.isdigit() == True:
             meaning_int = int(meaning_int)
             return meaning_int
 
     def save_string(self, locator):
-        meaning_str = self.driver.find_element(*locator)
-        meaning_str = meaning_str.text
+        meaning_str = self.driver.find_element(*locator).text
         return meaning_str
 
 
