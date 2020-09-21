@@ -11,6 +11,8 @@ class Space_Class:
     LOGIN_PAGE = "http://192.168.4.222/login"
     CASES_PAGE = "http://192.168.4.222/lk/cases"
     USERS_PAGE = "http://192.168.4.222/lk/admin"
+    WORKSPACE_PAGE = "http://192.168.4.222/lk/workspace/main"
+    COMMON_DATA_PAGE = "http://192.168.4.222/lk/workspace/common"
     '''
     DEVICES_PAGE = "http://192.168.4.222/devices"
     DICTIONARY_PAGE = "http://192.168.4.222/dicts"
@@ -24,16 +26,18 @@ class Space_Class:
 
     CASE_BUTTON = (By.XPATH, "//a[@class='app-header-content-topMenu-ul-li-link active']")
     WORKSPACE_BUTTON = (By.XPATH, "//a[@class='app-header-content-topMenu-ul-li-link']")
-
-
     LIBRARY_BUTTON = (By.XPATH,"//div[@class='app-header-content-topMenu-ul-li-link']//span[@class='app-header-content-topMenu-ul-li-link-label']")
+
+    LOG_OUT_BUTTON = (By.XPATH, "//a[@class='bar__link']")
+    LOG_OUT_BUTTON_EXIT = (By.XPATH, "//div[@class='drop-menu__outer drop-menu__outer--right']//a[@class='drop-menu__item']")
+    
+    
     DEVICES_BUTTON = (By.XPATH, "//li[@class='app-header-content-topMenu-ul-li topMenu-li']//li[1]//span[1]")
     DICTS_BUTTON = (By.XPATH, "//li[@class='app-header-content-topMenu-ul-li topMenu-li']//li[3]//span[1]")
     TAGS_BUTTON = (By.XPATH,"/html[1]/body[1]/div[1]/wa-root[1]/wa-cases[1]/div[1]/wa-header[1]/div[1]/div[1]/div[1]/div[2]/ul[1]/li[3]/div[2]/nav[1]/li[4]/span[1]")
     SYS_JOURNAL_BUTTON = (By.XPATH, "//li[5]//span[1]")
 
-    LOG_OUT_BUTTON_1 = (By.XPATH,"//a[@class='bar__link']")
-    LOG_OUT_BUTTON = (By.XPATH,"//div[@class='drop-menu__outer drop-menu__outer--right']//a[@class='drop-menu__item']")
+    
 
     """Нижний хедер"""
 

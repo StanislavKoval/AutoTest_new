@@ -18,7 +18,7 @@ import Driver
 
 
 
-class Actions(Driver.Driver):
+class Actions_Class(Driver.Driver):
     '''Работа с браузером'''
     def open_site(self,link):
         print('Открытие браузера')
