@@ -9,45 +9,53 @@ import Actions
 
 '''Здесь локаторы и функции для элементов без страницы (хедеры)'''
 
-class Space_Class(Actions.Actions_Class):
-    '''Адреса страниц'''
+class Header_Class(Actions.Actions_Class):
+    '''Адреса страниц для проверки'''
     LOGIN_PAGE = "http://192.168.4.222/login"
     CASES_PAGE = "http://192.168.4.222/lk/cases"
     USERS_PAGE = "http://192.168.4.222/lk/admin"
     WORKSPACE_PAGE = "http://192.168.4.222/lk/workspace/main"
     COMMON_DATA_PAGE = "http://192.168.4.222/lk/workspace/common"
 
-
-
-
     """Верхний хедер"""
+    WORKSPACE_BUTTON = (By.XPATH, "//li[@class='bar__item']//a[@href='/lk/workspace/main']")
+
     LOG_OUT_BUTTON = (By.XPATH, "//a[@class='bar__link']")
     LOG_OUT_BUTTON_EXIT = (By.XPATH, "//div[@class='drop-menu__outer drop-menu__outer--right']//a[@class='drop-menu__item']")
 
-    WORKSPACE_BUTTON = (By.XPATH, "//li[@class='bar__item']//a[@href='/lk/workspace/main']")
+    """Нижний хедер"""
 
-#Переделать
-    def open_workspace(self,Workspace=WORKSPACE_BUTTON,Check=WORKSPACE_PAGE):
+    def open_workspace(self):
         self.wait_time(time_to_wait=2)
-        self.click_the_button(locator=Workspace)
-
+        self.click_the_button(locator=Header_Class.WORKSPACE_BUTTON)
+        print("Открыть Рабочее пространство")
         self.wait_time(time_to_wait=2)
 
-        if self.driver.current_url == Check:
+        if self.driver.current_url == Header_Class.WORKSPACE_PAGE:
             print('Успешное открытие Рабочего простраства')
         else:
             print("Открытие Рабочего простраства не удалось")
+
+    def system_Log_Out(self):
+        self.click_the_button(locator=Header_Class.LOG_OUT_BUTTON)
+        self.click_the_button(locator=Header_Class.LOG_OUT_BUTTON_EXIT)
+        print("Разлогинится из системы")
+        self.wait_time(time_to_wait=2)
+
+        if self.driver.current_url == Header_Class.LOGIN_PAGE:
+            print('Успешный выход из системы')
+        else:
+            print("Выход из системы не удался")
             
 
-"""Нижний хедер"""
+
 '''
     DEVICES_PAGE = "http://192.168.4.222/devices"
     DICTIONARY_PAGE = "http://192.168.4.222/dicts"
     TAGS_PAGE = "http://192.168.4.222/tags"
     FILES_PAGE = "http://192.168.4.222/workspace/1"
-    MAPS_PAGE = "http://192.168.4.222/workspace/0"'''
-
-'''
+    MAPS_PAGE = "http://192.168.4.222/workspace/0"
+    
     CASE_BUTTON = (By.XPATH, "//a[@class='app-header-content-topMenu-ul-li-link active']")
     LIBRARY_BUTTON = (By.XPATH,"//div[@class='app-header-content-topMenu-ul-li-link']//span[@class='app-header-content-topMenu-ul-li-link-label']")
     DEVICES_BUTTON = (By.XPATH, "//li[@class='app-header-content-topMenu-ul-li topMenu-li']//li[1]//span[1]")

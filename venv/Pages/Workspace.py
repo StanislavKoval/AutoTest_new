@@ -3,8 +3,15 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import re
 
-class Workspace_Page_Locators:
+import Actions
+
+class Workspace_Class(Actions.Actions_Class):
+
+
+    GRID_COUNTER = (By.XPATH,"//h1[@class='typography__header--extra-large']")
+    '''
     RESET_BUTTON = (By.XPATH, "/html[1]/body[1]/div[1]/wa-root[1]/wa-workspace[1]/div[1]/div[2]/ws-tab[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/button[2]")
     DESCRIPTION_SEARCH_FIELD = (By.XPATH, "//input[@id='searchInput']")
     FROM_DATE_FIELD = (By.XPATH, "/html[1]/body[1]/div[1]/wa-root[1]/wa-workspace[1]/div[1]/div[2]/ws-tab[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/div[2]/div[1]/input[1]")
@@ -16,11 +23,21 @@ class Workspace_Page_Locators:
 
     APPLY_FILTER_BUTTON = (By.XPATH, "/html[1]/body[1]/div[1]/wa-root[1]/wa-workspace[1]/div[1]/div[2]/ws-tab[1]/div[1]/div[1]/div[2]/button[1]")
 
-    MAIN_ELEMENT_COUNTER = (By.XPATH, "/html[1]/body[1]/div[1]/wa-root[1]/wa-workspace[1]/div[1]/div[2]/ws-tab[1]/div[1]/ws-datagrid[1]/div[1]/div[1]/span[1]")
+    MAIN_ELEMENT_COUNTER = (By.XPATH, "/html[1]/body[1]/div[1]/wa-root[1]/wa-workspace[1]/div[1]/div[2]/ws-tab[1]/div[1]/ws-datagrid[1]/div[1]/div[1]/span[1]")'''
 
+    def save_grid_counter(self):
+        counter = self.save_string(locator=Workspace_Class.GRID_COUNTER)
+        counter = re.sub(r'Элементы','',counter)
+        counter = re.sub(r'Events','',counter)
+        counter = re.sub(r',','',counter)
+        counter = re.sub(r' ','',counter)
+        counter = re.sub(r':','',counter)
+
+        counter = int(counter)
+        return counter
+    '''
     # применения фильтра категории
-    def Apply_filter(
-            self, ):  # наверное лучше будет потом преобразовать его как применение фильтра категории #,checkbox_i_need, counter_i_need)
+    def Apply_filter(self ):  # наверное лучше будет потом преобразовать его как применение фильтра категории #,checkbox_i_need, counter_i_need)
         if self.driver.current_url == First_time.Locators.Page_adresses.WORKSPACE_PAGE:
             all_elements = Actions.save_counter_meaning(self,
                                                         First_time.Locators.Workspace_Page_Locators.MAIN_ELEMENT_COUNTER)
@@ -110,4 +127,4 @@ class Workspace_Page_Locators:
             else:
                 print("В первом элементе нет слова из фильтра")
         else:
-            print('Пользователь не находится на странице /workspace')
+            print('Пользователь не находится на странице /workspace')'''
